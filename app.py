@@ -14,8 +14,7 @@ CORS(app)
 
 class DataResource(Resource):
     def get(data):
-        urls = 
-        [
+        urls = [
             'https://lpse.surabaya.go.id/',
             'https://www.lpse.kemenkeu.go.id/',
             # 'https://lpse.kalteng.go.id/',
