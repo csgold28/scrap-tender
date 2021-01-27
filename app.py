@@ -6,6 +6,7 @@ from urllib.request import urlopen
 from urllib.error import HTTPError
 import ssl
 from socket import timeout
+import requests
 
 
 app = Flask(__name__)
@@ -91,6 +92,7 @@ def data():
         # JAKARTA
         "https://lpse.jakarta.go.id",
         "http://lpse.metro.polri.go.id",
+        "http://lpse.unimed.ac.id",
 
         # GORONTALO
         "http://lpse.boalemokab.go.id",
@@ -224,6 +226,7 @@ def data():
         "https://lpse.surabaya.go.id",
         "https://lpse.jatimprov.go.id",
         "http://lpse.jatim.polri.go.id",
+        "https://lpse.unair.ac.id",
 
         # KALIMANTAN BARAT
         "http://lpse.bengkayangkab.go.id",
@@ -548,6 +551,7 @@ def data():
         "http://lpse.palopokota.go.id",
         "http://112.78.46.114",
         "https://lpse.sulselprov.go.id",
+        "http://lpse.unm.ac.id",
 
         # SULAWESI TENGAH 
         "http://www.lpse-torajautara.go.id",
@@ -685,6 +689,7 @@ def data():
         "https://lpse.tebingtinggikota.go.id",
         "http://lpse.sumutprov.go.id",
         "http://lpse.sumut.polri.go.id",
+        'http://lpse.unimed.ac.id',
 
         # TNI / POLRI
         "https://lpse.tniad.org",
@@ -699,7 +704,30 @@ def data():
         "https://lpse.slemankab.go.id",
         "http://lpse.jogjakota.go.id",
         "https://lpse.jogjaprov.go.id",
-        "http://lpse.jogja.polri.go.id"
+        "http://lpse.jogja.polri.go.id",
+
+        # UNIVERSITAS
+        "https://lpse.ui.ac.id",
+        "http://lpse.unimed.ac.id",
+        "http://lpse.unm.ac.id",
+        "https://lpse.unair.ac.id",
+        "http://lpse.undip.ac.id",
+        "https://lpse.ugm.ac.id",
+        "http://lpse.unud.ac.id",
+        "http://lpse.um.ac.id",
+        "http://lpse.unhas.ac.id",
+        "http://lpse.ub.ac.id",
+        "https://lpse.unsyiah.ac.id",
+        "https://lpse.unej.ac.id",
+        "http://lpse.unsoed.ac.id",
+        "http://lpse.unnes.ac.id",
+        "http://lpse.unand.ac.id",
+        "http://lpse.unram.ac.id",
+        "http://lpse.utu.ac.id",
+        "http://lpse.unmul.ac.id",
+        "http://lpse.unimal.ac.id",
+        "http://lpse.untad.ac.id",
+        "http://lpse.unp.ac.id"
 
     ]
     hasil = []
@@ -723,7 +751,7 @@ def data():
                     nama = (target_list.find('a').get_text())
                     hps = (target_list.find('td','table-hps').get_text())
                     exp = (target_list.find('td','center').get_text())
-                    scrap = {'lpse' : url,'nama_tender': nama, 'hps_tender': hps, 'tanggal_akhir': exp }
+                    scrap = {'lpse' : url,'nama_tender': nama, 'hps_tender': hps, 'tanggal_akhir': exp, 'type' : t }
                     print(scrap)
                     hasil.append(scrap)
     data = {
@@ -732,5 +760,6 @@ def data():
         'data': hasil
     }
     return data
+
 if __name__ == "__main__":
     app.run(debug=True, port=8000)
