@@ -41,10 +41,10 @@ def data():
             barang = doc.find_all("tr", t)
             for target_list in barang:
                 nama = (target_list.find('a').get_text())
+                link = (target_list.find('a', href=True))
                 hps = (target_list.find('td','table-hps').get_text())
                 exp = (target_list.find('td','center').get_text())
-                scrap = {'lpse' : url,'nama_tender': nama, 'hps_tender': hps, 'tanggal_akhir': exp, 'type' : t }
-                print(scrap)
+                scrap = {'lpse' : url, 'link': link['href'], 'nama_tender': nama, 'hps': hps, 'tanggal_akhir': exp, 'type' : t }
                 hasil.append(scrap)
     data = {
         'code': 200,
